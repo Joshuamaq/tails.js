@@ -1,4 +1,4 @@
-import { addPlugin } from "./tails.js";
+import { addPlugin } from "../tails.js";
 
 // Animation Plugin - Common animations for modern web interfaces
 addPlugin({

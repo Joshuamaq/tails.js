@@ -142,7 +142,7 @@ Extend with simple JavaScript objects:
 
 | Feature | Tails.js | Tailwind CSS |
 |---------|----------|--------------|
-| **Setup** | ❌ One script tag | ✅ Build process required |
+| **Setup** | ✅ One script tag | ❌ Build process required |
 | **Bundle Size** | 🟢 ~15kb | 🟡 ~3MB dev / varies prod |
 | **Learning Curve** | 🟢 Minimal | 🟡 Moderate |
 | **Customization** | 🟡 Plugin-based | 🟢 Full config control |

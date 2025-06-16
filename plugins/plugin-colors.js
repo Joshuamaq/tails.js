@@ -1,4 +1,4 @@
-import { addPlugin } from "./tails.js";
+import { addPlugin } from "../tails.js";
 
 // Colors and Gradients Plugin
 addPlugin({

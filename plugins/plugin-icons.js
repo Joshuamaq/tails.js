@@ -1,4 +1,4 @@
-import { addPlugin } from "./tails.js";
+import { addPlugin } from "../tails.js";
 
 // Icons Plugin - Comprehensive Unicode/Emoji icon utilities
 addPlugin({

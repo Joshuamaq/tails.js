@@ -1,4 +1,4 @@
-import { addPlugin } from "./tails.js";
+import { addPlugin } from "../tails.js";
 
 // Simple Components Plugin - Reusable UI components using utility classes
 addPlugin({
