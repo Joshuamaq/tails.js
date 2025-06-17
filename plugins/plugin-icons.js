@@ -1,922 +1,725 @@
 import { addPlugin } from "../tails.js";
 
-// Icons Plugin - Comprehensive Unicode/Emoji icon utilities
-addPlugin({
-    variables: {
-        // Icon sizes
-        "icon-size-xs": "0.75rem",
-        "icon-size-sm": "1rem", 
-        "icon-size-md": "1.25rem",
-        "icon-size-lg": "1.5rem",
-        "icon-size-xl": "2rem",
-        "icon-size-2xl": "2.5rem",
-        "icon-size-3xl": "3rem",
+// Icons Plugin - Complete rewrite using new plugin syntax
+addPlugin(() => ({
+    // === VARIABLES ===
+    $iconSizeXs: "0.75rem",
+    $iconSizeSm: "1rem", 
+    $iconSizeMd: "1.25rem",
+    $iconSizeLg: "1.5rem",
+    $iconSizeXl: "2rem",
+    $iconSize2xl: "2.5rem",
+    $iconSize3xl: "3rem",
+    
+    // === BASE UTILITIES ===
+    ".icon": {
+        display: "inline-block",
+        lineHeight: "1",
+        verticalAlign: "middle",
+        fontStyle: "normal",
+        userSelect: "none"
     },
     
-    utilities: {
-        // Base icon class
-        "icon": {
-            "display": "inline-block",
-            "line-height": "1",
-            "vertical-align": "middle",
-            "font-style": "normal",
-            "user-select": "none"
-        },
-        
-        // Icon sizes
-        "icon-xs": {
-            "font-size": "var(--icon-size-xs)",
-            "width": "var(--icon-size-xs)",
-            "height": "var(--icon-size-xs)"
-        },
-        "icon-sm": {
-            "font-size": "var(--icon-size-sm)",
-            "width": "var(--icon-size-sm)",
-            "height": "var(--icon-size-sm)"
-        },
-        "icon-md": {
-            "font-size": "var(--icon-size-md)",
-            "width": "var(--icon-size-md)",
-            "height": "var(--icon-size-md)"
-        },
-        "icon-lg": {
-            "font-size": "var(--icon-size-lg)",
-            "width": "var(--icon-size-lg)",
-            "height": "var(--icon-size-lg)"
-        },
-        "icon-xl": {
-            "font-size": "var(--icon-size-xl)",
-            "width": "var(--icon-size-xl)",
-            "height": "var(--icon-size-xl)"
-        },
-        "icon-2xl": {
-            "font-size": "var(--icon-size-2xl)",
-            "width": "var(--icon-size-2xl)",
-            "height": "var(--icon-size-2xl)"
-        },
-        "icon-3xl": {
-            "font-size": "var(--icon-size-3xl)",
-            "width": "var(--icon-size-3xl)",
-            "height": "var(--icon-size-3xl)"        },
-        
-        // Navigation & UI Icons
-        "icon-home::before": { "content": "'🏠'" },
-        "icon-menu::before": { "content": "'☰'" },
-        "icon-close::before": { "content": "'✕'" },
-        "icon-search::before": { "content": "'🔍'" },
-        "icon-filter::before": { "content": "'🔽'" },
-        "icon-settings::before": { "content": "'⚙️'" },
-        "icon-profile::before": { "content": "'👤'" },
-        "icon-logout::before": { "content": "'↩️'" },
-        "icon-login::before": { "content": "'↪️'" },
-        "icon-dashboard::before": { "content": "'📊'" },
-        
-        // Arrows & Directions
-        "icon-arrow-up::before": { "content": "'↑'" },
-        "icon-arrow-down::before": { "content": "'↓'" },
-        "icon-arrow-left::before": { "content": "'←'" },
-        "icon-arrow-right::before": { "content": "'→'" },
-        "icon-chevron-up::before": { "content": "'⌃'" },        
-        "icon-chevron-down::before": { "content": "'⌄'" },
-        "icon-chevron-left::before": { "content": "'‹'" },
-        "icon-chevron-right::before": { "content": "'›'" },
-        "icon-double-up::before": { "content": "'⇈'" },
-        "icon-double-down::before": { "content": "'⇊'" },
-        
-        // Actions & Controls
-        "icon-play::before": { "content": "'▶️'" },
-        "icon-pause::before": { "content": "'⏸️'" },
-        "icon-stop::before": { "content": "'⏹️'" },
-        "icon-previous::before": { "content": "'⏮️'" },
-        "icon-next::before": { "content": "'⏭️'" },
-        "icon-rewind::before": { "content": "'⏪'" },
-        "icon-forward::before": { "content": "'⏩'" },
-        "icon-record::before": { "content": "'⏺️'" },
-        "icon-volume::before": { "content": "'🔊'" },
-        "icon-mute::before": { "content": "'🔇'" },
-        
-        // Files & Documents
-        "icon-file::before": { "content": "'📄'" },
-        "icon-folder::before": { "content": "'📁'" },
-        "icon-folder-open::before": { "content": "'📂'" },
-        "icon-document::before": { "content": "'📋'" },
-        "icon-download::before": { "content": "'⬇️'" },
-        "icon-upload::before": { "content": "'⬆️'" },
-        "icon-attachment::before": { "content": "'📎'" },
-        "icon-image::before": { "content": "'🖼️'" },
-        "icon-pdf::before": { "content": "'📕'" },
-        "icon-archive::before": { "content": "'🗃️'" },        
-        // Communication & Social
-        "icon-email::before": { "content": "'✉️'" },
-        "icon-message::before": { "content": "'💬'" },
-        "icon-chat::before": { "content": "'💭'" },
-        "icon-phone::before": { "content": "'📞'" },
-        "icon-video::before": { "content": "'📹'" },
-        "icon-camera::before": { "content": "'📷'" },
-        "icon-share::before": { "content": "'📤'" },
-        "icon-link::before": { "content": "'🔗'" },
-        "icon-hashtag::before": { "content": "'#️⃣'" },
-        "icon-mention::before": { "content": "'@'" },
-        
-        // Status & Feedback
-        "icon-check::before": { "content": "'✓'" },
-        "icon-checkmark::before": { "content": "'✅'" },
-        "icon-cross::before": { "content": "'❌'" },
-        "icon-warning::before": { "content": "'⚠️'" },
-        "icon-error::before": { "content": "'🚫'" },
-        "icon-info::before": { "content": "'ℹ️'" },
-        "icon-question::before": { "content": "'❓'" },
-        "icon-exclamation::before": { "content": "'❗'" },
-        "icon-success::before": { "content": "'🎉'" },
-        "icon-loading::before": { "content": "'⏳'" },
-        
-        // Shopping & Commerce
-        "icon-cart::before": { "content": "'🛒'" },
-        "icon-bag::before": { "content": "'🛍️'" },
-        "icon-credit-card::before": { "content": "'💳'" },
-        "icon-money::before": { "content": "'💰'" },
-        "icon-receipt::before": { "content": "'🧾'" },
-        "icon-tag::before": { "content": "'🏷️'" },
-        "icon-gift::before": { "content": "'🎁'" },
-        "icon-sale::before": { "content": "'🏷️'" },
-        "icon-discount::before": { "content": "'💸'" },
-        "icon-wallet::before": { "content": "'👛'" },
-        
-        // Time & Calendar
-        "icon-calendar::before": { "content": "'📅'" },
-        "icon-clock::before": { "content": "'🕐'" },
-        "icon-timer::before": { "content": "'⏲️'" },
-        "icon-alarm::before": { "content": "'⏰'" },
-        "icon-schedule::before": { "content": "'📆'" },
-        "icon-date::before": { "content": "'📅'" },
-        "icon-time::before": { "content": "'🕰️'" },
-        "icon-deadline::before": { "content": "'⏰'" },
-        "icon-reminder::before": { "content": "'🔔'" },
-        "icon-event::before": { "content": "'🎯'" },
-        
-        // Location & Maps
-        "icon-location::before": { "content": "'📍'" },
-        "icon-map::before": { "content": "'🗺️'" },
-        "icon-navigate::before": { "content": "'🧭'" },
-        "icon-destination::before": { "content": "'🎯'" },
-        "icon-route::before": { "content": "'🛣️'" },
-        "icon-travel::before": { "content": "'✈️'" },
-        "icon-car::before": { "content": "'🚗'" },
-        "icon-bus::before": { "content": "'🚌'" },
-        "icon-train::before": { "content": "'🚂'" },
-        "icon-bike::before": { "content": "'🚲'" },
-        
-        // Technology & Tools
-        "icon-computer::before": { "content": "'💻'" },
-        "icon-mobile::before": { "content": "'📱'" },
-        "icon-tablet::before": { "content": "'📟'" },
-        "icon-keyboard::before": { "content": "'⌨️'" },
-        "icon-mouse::before": { "content": "'🖱️'" },
-        "icon-printer::before": { "content": "'🖨️'" },
-        "icon-wifi::before": { "content": "'📶'" },
-        "icon-bluetooth::before": { "content": "'📶'" },
-        "icon-battery::before": { "content": "'🔋'" },
-        "icon-power::before": { "content": "'⚡'" },
-        
-        // Weather & Nature
-        "icon-sun::before": { "content": "'☀️'" },
-        "icon-moon::before": { "content": "'🌙'" },
-        "icon-star::before": { "content": "'⭐'" },
-        "icon-cloud::before": { "content": "'☁️'" },
-        "icon-rain::before": { "content": "'🌧️'" },
-        "icon-snow::before": { "content": "'❄️'" },
-        "icon-wind::before": { "content": "'💨'" },
-        "icon-storm::before": { "content": "'⛈️'" },
-        "icon-rainbow::before": { "content": "'🌈'" },
-        "icon-fire::before": { "content": "'🔥'" },
-        
-        // Food & Dining
-        "icon-food::before": { "content": "'🍽️'" },
-        "icon-restaurant::before": { "content": "'🍴'" },
-        "icon-coffee::before": { "content": "'☕'" },
-        "icon-pizza::before": { "content": "'🍕'" },
-        "icon-burger::before": { "content": "'🍔'" },
-        "icon-cake::before": { "content": "'🎂'" },
-        "icon-drink::before": { "content": "'🥤'" },
-        "icon-wine::before": { "content": "'🍷'" },
-        "icon-beer::before": { "content": "'🍺'" },
-        "icon-kitchen::before": { "content": "'👨‍🍳'" },
-        
-        // Health & Medical
-        "icon-health::before": { "content": "'🏥'" },
-        "icon-medical::before": { "content": "'⚕️'" },
-        "icon-pill::before": { "content": "'💊'" },
-        "icon-heart::before": { "content": "'❤️'" },
-        "icon-heartbeat::before": { "content": "'💓'" },
-        "icon-fitness::before": { "content": "'💪'" },
-        "icon-wellness::before": { "content": "'🧘'" },
-        "icon-doctor::before": { "content": "'👩‍⚕️'" },
-        "icon-ambulance::before": { "content": "'🚑'" },
-        "icon-bandage::before": { "content": "'🩹'" },
-        
-        // Sports & Activities
-        "icon-sports::before": { "content": "'⚽'" },
-        "icon-football::before": { "content": "'🏈'" },
-        "icon-basketball::before": { "content": "'🏀'" },
-        "icon-tennis::before": { "content": "'🎾'" },
-        "icon-golf::before": { "content": "'⛳'" },
-        "icon-swimming::before": { "content": "'🏊'" },
-        "icon-running::before": { "content": "'🏃'" },
-        "icon-cycling::before": { "content": "'🚴'" },
-        "icon-gym::before": { "content": "'🏋️'" },
-        "icon-trophy::before": { "content": "'🏆'" },
-        
-        // Security & Privacy
-        "icon-lock::before": { "content": "'🔒'" },
-        "icon-unlock::before": { "content": "'🔓'" },
-        "icon-key::before": { "content": "'🔑'" },
-        "icon-shield::before": { "content": "'🛡️'" },
-        "icon-security::before": { "content": "'🔐'" },
-        "icon-password::before": { "content": "'🔒'" },
-        "icon-fingerprint::before": { "content": "'👆'" },
-        "icon-eye::before": { "content": "'👁️'" },
-        "icon-eye-off::before": { "content": "'🙈'" },
-        "icon-private::before": { "content": "'🔒'" },
-        
-        // Emotions & Reactions
-        "icon-like::before": { "content": "'👍'" },
-        "icon-dislike::before": { "content": "'👎'" },
-        "icon-love::before": { "content": "'💖'" },
-        "icon-happy::before": { "content": "'😊'" },
-        "icon-sad::before": { "content": "'😢'" },
-        "icon-angry::before": { "content": "'😠'" },
-        "icon-surprised::before": { "content": "'😲'" },
-        "icon-laughing::before": { "content": "'😂'" },
-        "icon-thinking::before": { "content": "'🤔'" },
-        "icon-celebrate::before": { "content": "'🎉'" },
-          // Utility & Miscellaneous
-        "icon-edit::before": { "content": "'✏️'" },
-        "icon-delete::before": { "content": "'🗑️'" },
-        "icon-copy::before": { "content": "'📋'" },
-        "icon-paste::before": { "content": "'📄'" },
-        "icon-cut::before": { "content": "'✂️'" },
-        "icon-save::before": { "content": "'💾'" },
-        "icon-refresh::before": { "content": "'🔄'" },
-        "icon-sync::before": { "content": "'🔃'" },
-        "icon-undo::before": { "content": "'↶'" },
-        "icon-redo::before": { "content": "'↷'" },
-        "icon-trash::before": { "content": "'🗑️'" },
-        "icon-restore::before": { "content": "'♻️'" },
-        "icon-backup::before": { "content": "'💿'" },
-        "icon-export::before": { "content": "'📤'" },
-        "icon-import::before": { "content": "'📥'" },
-        "icon-print::before": { "content": "'🖨️'" },
-        "icon-scan::before": { "content": "'📷'" },
-        "icon-zoom-in::before": { "content": "'🔍'" },
-        "icon-zoom-out::before": { "content": "'🔍'" },
-        "icon-fullscreen::before": { "content": "'⛶'" },
-        "icon-minimize::before": { "content": "'🗕'" },
-        "icon-maximize::before": { "content": "'🗖'" },
-        "icon-pin::before": { "content": "'📌'" },
-        "icon-unpin::before": { "content": "'📌'" },
-        "icon-bookmark::before": { "content": "'🔖'" },
-        "icon-flag::before": { "content": "'🚩'" },
-        "icon-star-filled::before": { "content": "'⭐'" },
-        "icon-star-empty::before": { "content": "'☆'" },
-        "icon-favorite::before": { "content": "'♥'" },
-        "icon-unfavorite::before": { "content": "'♡'" },
-        
-        // Extended Navigation & UI
-        "icon-add::before": { "content": "'➕'" },
-        "icon-plus::before": { "content": "'✚'" },
-        "icon-minus::before": { "content": "'➖'" },
-        "icon-remove::before": { "content": "'➖'" },
-        "icon-more::before": { "content": "'⋯'" },
-        "icon-more-vertical::before": { "content": "'⋮'" },
-        "icon-more-horizontal::before": { "content": "'⋯'" },
-        "icon-expand::before": { "content": "'⤢'" },
-        "icon-collapse::before": { "content": "'⤡'" },
-        "icon-external::before": { "content": "'↗️'" },
-        "icon-new-window::before": { "content": "'🗗'" },
-        "icon-sidebar::before": { "content": "'⚏'" },
-        "icon-grid::before": { "content": "'⚏'" },
-        "icon-list::before": { "content": "'☰'" },
-        "icon-layout::before": { "content": "'⊞'" },
-        "icon-widget::before": { "content": "'⊞'" },
-        "icon-panel::before": { "content": "'⊞'" },
-        "icon-split::before": { "content": "'⫿'" },
-        "icon-merge::before": { "content": "'⚏'" },
-        "icon-duplicate::before": { "content": "'⧉'" },
-        
-        // Extended Actions & Controls
-        "icon-skip-forward::before": { "content": "'⏭'" },
-        "icon-skip-backward::before": { "content": "'⏮'" },
-        "icon-fast-forward::before": { "content": "'⏩'" },
-        "icon-fast-backward::before": { "content": "'⏪'" },
-        "icon-shuffle::before": { "content": "'🔀'" },
-        "icon-repeat::before": { "content": "'🔁'" },
-        "icon-repeat-one::before": { "content": "'🔂'" },
-        "icon-volume-low::before": { "content": "'🔈'" },
-        "icon-volume-high::before": { "content": "'🔊'" },
-        "icon-volume-off::before": { "content": "'🔇'" },
-        "icon-microphone::before": { "content": "'🎤'" },
-        "icon-microphone-off::before": { "content": "'🎤'" },
-        "icon-headphones::before": { "content": "'🎧'" },
-        "icon-speaker::before": { "content": "'🔊'" },
-        "icon-radio::before": { "content": "'📻'" },
-        "icon-tv::before": { "content": "'📺'" },
-        "icon-monitor::before": { "content": "'🖥️'" },
-        "icon-display::before": { "content": "'🖥️'" },
-        "icon-screen::before": { "content": "'📱'" },
-        "icon-gamepad::before": { "content": "'🎮'" },
-        
-        // Extended Files & Documents
-        "icon-text::before": { "content": "'📝'" },
-        "icon-note::before": { "content": "'🗒️'" },
-        "icon-notebook::before": { "content": "'📒'" },
-        "icon-book::before": { "content": "'📖'" },
-        "icon-library::before": { "content": "'📚'" },
-        "icon-spreadsheet::before": { "content": "'📊'" },
-        "icon-presentation::before": { "content": "'📽️'" },
-        "icon-code::before": { "content": "'💻'" },
-        "icon-database::before": { "content": "'🗄️'" },
-        "icon-server::before": { "content": "'🖥️'" },
-        "icon-cloud-download::before": { "content": "'☁️'" },
-        "icon-cloud-upload::before": { "content": "'☁️'" },
-        "icon-zip::before": { "content": "'🗜️'" },
-        "icon-compress::before": { "content": "'🗜️'" },
-        "icon-extract::before": { "content": "'📦'" },
-        "icon-package::before": { "content": "'📦'" },
-        "icon-box::before": { "content": "'📦'" },
-        "icon-tape::before": { "content": "'📼'" },
-        "icon-disk::before": { "content": "'💽'" },
-        "icon-usb::before": { "content": "'💾'" },
-        "icon-memory::before": { "content": "'💾'" },
-        "icon-hard-drive::before": { "content": "'💽'" },
-        
-        // Extended Communication & Social
-        "icon-call::before": { "content": "'📞'" },
-        "icon-call-incoming::before": { "content": "'📞'" },
-        "icon-call-outgoing::before": { "content": "'📞'" },
-        "icon-voicemail::before": { "content": "'📞'" },
-        "icon-fax::before": { "content": "'📠'" },
-        "icon-broadcast::before": { "content": "'📡'" },
-        "icon-signal::before": { "content": "'📶'" },
-        "icon-antenna::before": { "content": "'📡'" },
-        "icon-satellite::before": { "content": "'🛰️'" },
-        "icon-network::before": { "content": "'🌐'" },
-        "icon-globe::before": { "content": "'🌍'" },
-        "icon-world::before": { "content": "'🌎'" },
-        "icon-earth::before": { "content": "'🌏'" },
-        "icon-web::before": { "content": "'🌐'" },
-        "icon-internet::before": { "content": "'🌐'" },
-        "icon-rss::before": { "content": "'📡'" },
-        "icon-feed::before": { "content": "'📡'" },
-        "icon-blog::before": { "content": "'📝'" },
-        "icon-news::before": { "content": "'📰'" },
-        "icon-newspaper::before": { "content": "'📰'" },
-        "icon-magazine::before": { "content": "'📖'" },
-        "icon-social::before": { "content": "'👥'" },
-        "icon-community::before": { "content": "'👥'" },
-        "icon-group::before": { "content": "'👥'" },
-        "icon-team::before": { "content": "'👥'" },
-        "icon-users::before": { "content": "'👥'" },
-        "icon-user-add::before": { "content": "'👤'" },
-        "icon-user-remove::before": { "content": "'👤'" },
-        "icon-user-check::before": { "content": "'👤'" },
-        "icon-user-x::before": { "content": "'👤'" },
-        "icon-followers::before": { "content": "'👥'" },
-        "icon-following::before": { "content": "'👥'" },
-        
-        // Extended Status & Feedback
-        "icon-pending::before": { "content": "'⏳'" },
-        "icon-processing::before": { "content": "'⚙️'" },
-        "icon-completed::before": { "content": "'✅'" },
-        "icon-failed::before": { "content": "'❌'" },
-        "icon-cancelled::before": { "content": "'⛔'" },
-        "icon-blocked::before": { "content": "'🚫'" },
-        "icon-forbidden::before": { "content": "'⛔'" },
-        "icon-allowed::before": { "content": "'✅'" },
-        "icon-approved::before": { "content": "'✅'" },
-        "icon-rejected::before": { "content": "'❌'" },
-        "icon-verified::before": { "content": "'✅'" },
-        "icon-unverified::before": { "content": "'❓'" },
-        "icon-online::before": { "content": "'🟢'" },
-        "icon-offline::before": { "content": "'🔴'" },
-        "icon-away::before": { "content": "'🟡'" },
-        "icon-busy::before": { "content": "'🔴'" },
-        "icon-available::before": { "content": "'🟢'" },
-        "icon-unavailable::before": { "content": "'🔴'" },
-        "icon-maintenance::before": { "content": "'🚧'" },
-        "icon-construction::before": { "content": "'🚧'" },
-        "icon-repair::before": { "content": "'🔧'" },
-        "icon-broken::before": { "content": "'💥'" },
-        "icon-crash::before": { "content": "'💥'" },
-        "icon-bug::before": { "content": "'🐛'" },
-        "icon-test::before": { "content": "'🧪'" },
-        "icon-experiment::before": { "content": "'🧪'" },
-        "icon-beta::before": { "content": "'🧪'" },
-        "icon-alpha::before": { "content": "'🔬'" },
-        "icon-preview::before": { "content": "'👁️'" },
-        "icon-draft::before": { "content": "'📝'" },
-        "icon-published::before": { "content": "'📢'" },
-        "icon-archived::before": { "content": "'📦'" },
-        
-        // Extended Shopping & Commerce
-        "icon-store::before": { "content": "'🏪'" },
-        "icon-shop::before": { "content": "'🛒'" },
-        "icon-market::before": { "content": "'🏪'" },
-        "icon-marketplace::before": { "content": "'🏪'" },
-        "icon-checkout::before": { "content": "'💳'" },
-        "icon-payment::before": { "content": "'💳'" },
-        "icon-price::before": { "content": "'💰'" },
-        "icon-cost::before": { "content": "'💰'" },
-        "icon-budget::before": { "content": "'💰'" },
-        "icon-invoice::before": { "content": "'🧾'" },
-        "icon-bill::before": { "content": "'🧾'" },
-        "icon-tax::before": { "content": "'🧾'" },
-        "icon-refund::before": { "content": "'💸'" },
-        "icon-cashback::before": { "content": "'💸'" },
-        "icon-coupon::before": { "content": "'🎫'" },
-        "icon-voucher::before": { "content": "'🎫'" },
-        "icon-ticket::before": { "content": "'🎫'" },
-        "icon-points::before": { "content": "'⭐'" },
-        "icon-rewards::before": { "content": "'🏆'" },
-        "icon-loyalty::before": { "content": "'💎'" },
-        "icon-membership::before": { "content": "'💳'" },
-        "icon-subscription::before": { "content": "'📋'" },
-        "icon-plan::before": { "content": "'📋'" },
-        "icon-upgrade::before": { "content": "'⬆️'" },
-        "icon-downgrade::before": { "content": "'⬇️'" },
-        "icon-free::before": { "content": "'🆓'" },
-        "icon-premium::before": { "content": "'💎'" },
-        "icon-pro::before": { "content": "'🏆'" },
-        "icon-enterprise::before": { "content": "'🏢'" },
-        
-        // Extended Time & Calendar
-        "icon-today::before": { "content": "'📅'" },
-        "icon-tomorrow::before": { "content": "'📅'" },
-        "icon-yesterday::before": { "content": "'📅'" },
-        "icon-week::before": { "content": "'📅'" },
-        "icon-month::before": { "content": "'📅'" },
-        "icon-year::before": { "content": "'📅'" },
-        "icon-agenda::before": { "content": "'📋'" },
-        "icon-appointment::before": { "content": "'📅'" },
-        "icon-meeting::before": { "content": "'🤝'" },
-        "icon-conference::before": { "content": "'👥'" },
-        "icon-webinar::before": { "content": "'📹'" },
-        "icon-session::before": { "content": "'💭'" },
-        "icon-break::before": { "content": "'☕'" },
-        "icon-lunch::before": { "content": "'🍽️'" },
-        "icon-holiday::before": { "content": "'🏖️'" },
-        "icon-vacation::before": { "content": "'🏖️'" },
-        "icon-weekend::before": { "content": "'🏖️'" },
-        "icon-workday::before": { "content": "'💼'" },
-        "icon-overtime::before": { "content": "'⏰'" },
-        "icon-timesheet::before": { "content": "'📋'" },
-        "icon-stopwatch::before": { "content": "'⏱️'" },
-        "icon-countdown::before": { "content": "'⏰'" },
-        "icon-duration::before": { "content": "'⏱️'" },
-        "icon-elapsed::before": { "content": "'⏱️'" },
-        "icon-remaining::before": { "content": "'⏱️'" },
-        "icon-timezone::before": { "content": "'🌍'" },
-        "icon-utc::before": { "content": "'🌍'" },
-        "icon-local::before": { "content": "'🏠'" },
-        
-        // Extended Location & Maps
-        "icon-address::before": { "content": "'📍'" },
-        "icon-coordinates::before": { "content": "'📍'" },
-        "icon-gps::before": { "content": "'🛰️'" },
-        "icon-compass::before": { "content": "'🧭'" },
-        "icon-direction::before": { "content": "'🧭'" },
-        "icon-distance::before": { "content": "'📏'" },
-        "icon-radius::before": { "content": "'🎯'" },
-        "icon-area::before": { "content": "'🗺️'" },
-        "icon-region::before": { "content": "'🗺️'" },
-        "icon-country::before": { "content": "'🏴'" },
-        "icon-city::before": { "content": "'🏙️'" },
-        "icon-building::before": { "content": "'🏢'" },
-        "icon-office::before": { "content": "'🏢'" },
-        "icon-factory::before": { "content": "'🏭'" },
-        "icon-warehouse::before": { "content": "'🏪'" },
-        "icon-hospital::before": { "content": "'🏥'" },
-        "icon-school::before": { "content": "'🏫'" },
-        "icon-university::before": { "content": "'🏫'" },
-        "icon-library::before": { "content": "'📚'" },
-        "icon-bank::before": { "content": "'🏦'" },
-        "icon-atm::before": { "content": "'🏧'" },
-        "icon-gas-station::before": { "content": "'⛽'" },
-        "icon-parking::before": { "content": "'🅿️'" },
-        "icon-airport::before": { "content": "'✈️'" },
-        "icon-station::before": { "content": "'🚉'" },
-        "icon-stop::before": { "content": "'🛑'" },
-        "icon-traffic::before": { "content": "'🚦'" },
-        "icon-road::before": { "content": "'🛣️'" },
-        "icon-highway::before": { "content": "'🛣️'" },
-        "icon-bridge::before": { "content": "'🌉'" },
-        "icon-tunnel::before": { "content": "'🚇'" },
-        "icon-subway::before": { "content": "'🚇'" },
-        "icon-metro::before": { "content": "'🚇'" },
-        "icon-taxi::before": { "content": "'🚖'" },
-        "icon-uber::before": { "content": "'🚗'" },
-        "icon-rideshare::before": { "content": "'🚗'" },
-        "icon-carpool::before": { "content": "'🚗'" },
-        "icon-scooter::before": { "content": "'🛴'" },
-        "icon-motorcycle::before": { "content": "'🏍️'" },
-        "icon-truck::before": { "content": "'🚚'" },
-        "icon-delivery::before": { "content": "'🚚'" },
-        "icon-shipping::before": { "content": "'📦'" },
-        "icon-logistics::before": { "content": "'📦'" },
-        "icon-freight::before": { "content": "'🚚'" },
-        "icon-cargo::before": { "content": "'📦'" },
-        
-        // Extended Technology & Tools
-        "icon-laptop::before": { "content": "'💻'" },
-        "icon-desktop::before": { "content": "'🖥️'" },
-        "icon-workstation::before": { "content": "'🖥️'" },
-        "icon-phone::before": { "content": "'📱'" },
-        "icon-smartphone::before": { "content": "'📱'" },
-        "icon-iphone::before": { "content": "'📱'" },
-        "icon-android::before": { "content": "'📱'" },
-        "icon-tablet-device::before": { "content": "'📱'" },
-        "icon-ipad::before": { "content": "'📱'" },
-        "icon-watch::before": { "content": "'⌚'" },
-        "icon-smartwatch::before": { "content": "'⌚'" },
-        "icon-fitness-tracker::before": { "content": "'⌚'" },
-        "icon-headset::before": { "content": "'🎧'" },
-        "icon-earbuds::before": { "content": "'🎧'" },
-        "icon-webcam::before": { "content": "'📹'" },
-        "icon-projector::before": { "content": "'📽️'" },
-        "icon-scanner::before": { "content": "'📷'" },
-        "icon-router::before": { "content": "'📡'" },
-        "icon-modem::before": { "content": "'📡'" },
-        "icon-ethernet::before": { "content": "'🔌'" },
-        "icon-cable::before": { "content": "'🔌'" },
-        "icon-adapter::before": { "content": "'🔌'" },
-        "icon-charger::before": { "content": "'🔌'" },
-        "icon-plug::before": { "content": "'🔌'" },
-        "icon-socket::before": { "content": "'🔌'" },
-        "icon-extension::before": { "content": "'🔌'" },
-        "icon-circuit::before": { "content": "'⚡'" },
-        "icon-chip::before": { "content": "'🔬'" },
-        "icon-processor::before": { "content": "'🔬'" },
-        "icon-cpu::before": { "content": "'🔬'" },
-        "icon-gpu::before": { "content": "'🔬'" },
-        "icon-ram::before": { "content": "'💾'" },
-        "icon-storage::before": { "content": "'💾'" },
-        "icon-ssd::before": { "content": "'💾'" },
-        "icon-hdd::before": { "content": "'💽'" },
-        "icon-optical::before": { "content": "'💿'" },
-        "icon-cd::before": { "content": "'💿'" },
-        "icon-dvd::before": { "content": "'📀'" },
-        "icon-bluray::before": { "content": "'📀'" },
-        
-        // Extended Weather & Nature
-        "icon-sunrise::before": { "content": "'🌅'" },
-        "icon-sunset::before": { "content": "'🌅'" },
-        "icon-dawn::before": { "content": "'🌅'" },
-        "icon-dusk::before": { "content": "'🌆'" },
-        "icon-night::before": { "content": "'🌃'" },
-        "icon-day::before": { "content": "'☀️'" },
-        "icon-morning::before": { "content": "'🌅'" },
-        "icon-afternoon::before": { "content": "'☀️'" },
-        "icon-evening::before": { "content": "'🌆'" },
-        "icon-midnight::before": { "content": "'🌃'" },
-        "icon-crescent::before": { "content": "'🌙'" },
-        "icon-full-moon::before": { "content": "'🌕'" },
-        "icon-new-moon::before": { "content": "'🌑'" },
-        "icon-eclipse::before": { "content": "'🌘'" },
-        "icon-comet::before": { "content": "'☄️'" },
-        "icon-meteor::before": { "content": "'☄️'" },
-        "icon-space::before": { "content": "'🌌'" },
-        "icon-galaxy::before": { "content": "'🌌'" },
-        "icon-universe::before": { "content": "'🌌'" },
-        "icon-planet::before": { "content": "'🪐'" },
-        "icon-earth-globe::before": { "content": "'🌍'" },
-        "icon-mars::before": { "content": "'🔴'" },
-        "icon-jupiter::before": { "content": "'🪐'" },
-        "icon-saturn::before": { "content": "'🪐'" },
-        "icon-cloudy::before": { "content": "'⛅'" },
-        "icon-partly-cloudy::before": { "content": "'⛅'" },
-        "icon-overcast::before": { "content": "'☁️'" },
-        "icon-fog::before": { "content": "'🌫️'" },
-        "icon-mist::before": { "content": "'🌫️'" },
-        "icon-haze::before": { "content": "'🌫️'" },
-        "icon-drizzle::before": { "content": "'🌦️'" },
-        "icon-shower::before": { "content": "'🌦️'" },
-        "icon-thunderstorm::before": { "content": "'⛈️'" },
-        "icon-lightning::before": { "content": "'⚡'" },
-        "icon-thunder::before": { "content": "'⛈️'" },
-        "icon-tornado::before": { "content": "'🌪️'" },
-        "icon-hurricane::before": { "content": "'🌀'" },
-        "icon-cyclone::before": { "content": "'🌀'" },
-        "icon-typhoon::before": { "content": "'🌀'" },
-        "icon-blizzard::before": { "content": "'❄️'" },
-        "icon-hail::before": { "content": "'🧊'" },
-        "icon-ice::before": { "content": "'🧊'" },
-        "icon-frost::before": { "content": "'❄️'" },
-        "icon-freeze::before": { "content": "'🧊'" },
-        "icon-hot::before": { "content": "'🔥'" },
-        "icon-cold::before": { "content": "'❄️'" },
-        "icon-warm::before": { "content": "'☀️'" },
-        "icon-cool::before": { "content": "'🌤️'" },
-        "icon-humidity::before": { "content": "'💧'" },
-        "icon-pressure::before": { "content": "'🌡️'" },
-        "icon-temperature::before": { "content": "'🌡️'" },
-        "icon-thermometer::before": { "content": "'🌡️'" },
-        "icon-barometer::before": { "content": "'🌡️'" },
-        "icon-uv::before": { "content": "'☀️'" },
-        "icon-visibility::before": { "content": "'👁️'" },
-        "icon-air-quality::before": { "content": "'💨'" },
-        "icon-pollution::before": { "content": "'🏭'" },
-        "icon-smog::before": { "content": "'🌫️'" },
-        "icon-clean-air::before": { "content": "'🌿'" },
-        "icon-fresh-air::before": { "content": "'🌿'" },
-        "icon-breeze::before": { "content": "'💨'" },
-        "icon-gust::before": { "content": "'💨'" },
-        "icon-calm::before": { "content": "'🌤️'" },
-        "icon-still::before": { "content": "'🌤️'" },
-        
-        // Business & Finance
-        "icon-business::before": { "content": "'💼'" },
-        "icon-briefcase::before": { "content": "'💼'" },
-        "icon-portfolio::before": { "content": "'📂'" },
-        "icon-investment::before": { "content": "'📈'" },
-        "icon-profit::before": { "content": "'📈'" },
-        "icon-loss::before": { "content": "'📉'" },
-        "icon-revenue::before": { "content": "'💰'" },
-        "icon-income::before": { "content": "'💰'" },
-        "icon-expense::before": { "content": "'💸'" },
-        "icon-savings::before": { "content": "'🏦'" },
-        "icon-loan::before": { "content": "'💳'" },
-        "icon-debt::before": { "content": "'💳'" },
-        "icon-credit::before": { "content": "'💳'" },
-        "icon-debit::before": { "content": "'💳'" },
-        "icon-cash::before": { "content": "'💵'" },
-        "icon-coin::before": { "content": "'🪙'" },
-        "icon-dollar::before": { "content": "'💵'" },
-        "icon-euro::before": { "content": "'💶'" },
-        "icon-pound::before": { "content": "'💷'" },
-        "icon-yen::before": { "content": "'💴'" },
-        "icon-bitcoin::before": { "content": "'₿'" },
-        "icon-crypto::before": { "content": "'₿'" },
-        "icon-blockchain::before": { "content": "'⛓️'" },
-        "icon-stocks::before": { "content": "'📈'" },
-        "icon-bonds::before": { "content": "'📊'" },
-        "icon-forex::before": { "content": "'💱'" },
-        "icon-exchange::before": { "content": "'💱'" },
-        "icon-rate::before": { "content": "'📊'" },
-        "icon-interest::before": { "content": "'💰'" },
-        "icon-dividend::before": { "content": "'💰'" },
-        "icon-yield::before": { "content": "'📈'" },
-        "icon-growth::before": { "content": "'📈'" },
-        "icon-decline::before": { "content": "'📉'" },
-        "icon-market::before": { "content": "'📊'" },
-        "icon-bull::before": { "content": "'📈'" },
-        "icon-bear::before": { "content": "'📉'" },
-        "icon-trend::before": { "content": "'📈'" },
-        "icon-analysis::before": { "content": "'📊'" },
-        "icon-report::before": { "content": "'📋'" },
-        "icon-statement::before": { "content": "'📋'" },
-        "icon-balance::before": { "content": "'⚖️'" },
-        "icon-audit::before": { "content": "'📋'" },
-        "icon-compliance::before": { "content": "'📋'" },
-        "icon-regulation::before": { "content": "'📋'" },
-        "icon-legal::before": { "content": "'⚖️'" },
-        "icon-contract::before": { "content": "'📋'" },
-        "icon-agreement::before": { "content": "'🤝'" },
-        "icon-deal::before": { "content": "'🤝'" },
-        "icon-negotiation::before": { "content": "'🤝'" },
-        "icon-handshake::before": { "content": "'🤝'" },
-        "icon-partnership::before": { "content": "'🤝'" },
-        "icon-collaboration::before": { "content": "'🤝'" },
-        "icon-merger::before": { "content": "'🤝'" },
-        "icon-acquisition::before": { "content": "'🤝'" },
-        "icon-ipo::before": { "content": "'📈'" },
-        "icon-startup::before": { "content": "'🚀'" },
-        "icon-unicorn::before": { "content": "'🦄'" },
-        "icon-scale::before": { "content": "'📈'" },
-        "icon-pivot::before": { "content": "'🔄'" },
-        "icon-disruption::before": { "content": "'💥'" },
-        "icon-innovation::before": { "content": "'💡'" },
-        "icon-breakthrough::before": { "content": "'💥'" },
-        "icon-milestone::before": { "content": "'🏁'" },
-        "icon-achievement::before": { "content": "'🏆'" },
-        "icon-goal::before": { "content": "'🎯'" },
-        "icon-target::before": { "content": "'🎯'" },
-        "icon-objective::before": { "content": "'🎯'" },
-        "icon-strategy::before": { "content": "'♟️'" },
-        "icon-tactics::before": { "content": "'♟️'" },
-        "icon-planning::before": { "content": "'📋'" },
-        "icon-roadmap::before": { "content": "'🗺️'" },
-        "icon-timeline::before": { "content": "'📅'" },
-        "icon-schedule-plan::before": { "content": "'📅'" },
-        "icon-project::before": { "content": "'📁'" },
-        "icon-task::before": { "content": "'✅'" },
-        "icon-todo::before": { "content": "'📝'" },
-        "icon-checklist::before": { "content": "'📋'" },
-        "icon-progress::before": { "content": "'📊'" },
-        "icon-completion::before": { "content": "'✅'" },
-        "icon-workflow::before": { "content": "'🔄'" },
-        "icon-process::before": { "content": "'⚙️'" },
-        "icon-automation::before": { "content": "'🤖'" },
-        "icon-efficiency::before": { "content": "'⚡'" },
-        "icon-productivity::before": { "content": "'📈'" },
-        "icon-performance::before": { "content": "'📊'" },
-        "icon-metrics::before": { "content": "'📊'" },
-        "icon-kpi::before": { "content": "'📊'" },
-        "icon-dashboard-chart::before": { "content": "'📊'" },
-        "icon-analytics::before": { "content": "'📊'" },
-        "icon-insights::before": { "content": "'💡'" },
-        "icon-intelligence::before": { "content": "'🧠'" },
-        "icon-ai::before": { "content": "'🤖'" },
-        "icon-ml::before": { "content": "'🤖'" },
-        "icon-algorithm::before": { "content": "'🔢'" },
-        "icon-data::before": { "content": "'📊'" },
-        "icon-big-data::before": { "content": "'📊'" },
-        "icon-dataset::before": { "content": "'📊'" },
-        "icon-data-science::before": { "content": "'🔬'" },
-        "icon-research::before": { "content": "'🔬'" },
-        "icon-study::before": { "content": "'📚'" },
-        "icon-survey::before": { "content": "'📋'" },
-        "icon-poll::before": { "content": "'📊'" },
-        "icon-vote::before": { "content": "'🗳️'" },
-        "icon-election::before": { "content": "'🗳️'" },
-        "icon-democracy::before": { "content": "'🗳️'" },
-        "icon-government::before": { "content": "'🏛️'" },
-        "icon-policy::before": { "content": "'📋'" },
-        "icon-law::before": { "content": "'⚖️'" },
-        "icon-justice::before": { "content": "'⚖️'" },
-        "icon-court::before": { "content": "'🏛️'" },
-        "icon-judge::before": { "content": "'⚖️'" },
-        "icon-lawyer::before": { "content": "'⚖️'" },
-        "icon-attorney::before": { "content": "'⚖️'" },
-        "icon-gavel::before": { "content": "'🔨'" },
-        "icon-verdict::before": { "content": "'⚖️'" },
-        "icon-sentence::before": { "content": "'📜'" },
-        "icon-penalty::before": { "content": "'⚠️'" },
-        "icon-fine::before": { "content": "'💰'" },
-        "icon-tax-fine::before": { "content": "'💰'" },
-        "icon-violation::before": { "content": "'⚠️'" },
-        "icon-offense::before": { "content": "'⚠️'" },
-        "icon-crime::before": { "content": "'🚨'" },
-        "icon-police::before": { "content": "'👮'" },
-        "icon-security-guard::before": { "content": "'👮'" },
-        "icon-surveillance::before": { "content": "'📹'" },
-        "icon-cctv::before": { "content": "'📹'" },
-        "icon-monitor-security::before": { "content": "'📹'" },
-        "icon-alarm-security::before": { "content": "'🚨'" },
-        "icon-siren::before": { "content": "'🚨'" },
-        "icon-emergency::before": { "content": "'🚨'" },
-        "icon-sos::before": { "content": "'🆘'" },
-        "icon-help::before": { "content": "'❓'" },
-        "icon-support::before": { "content": "'🎧'" },
-        "icon-assistance::before": { "content": "'🤝'" },
-        "icon-service::before": { "content": "'🔧'" },
-        "icon-maintenance-service::before": { "content": "'🔧'" },
-        "icon-repair-service::before": { "content": "'🔧'" },
-        "icon-fix::before": { "content": "'🔧'" },
-        "icon-tool::before": { "content": "'🔧'" },
-        "icon-wrench::before": { "content": "'🔧'" },
-        "icon-screwdriver::before": { "content": "'🪛'" },
-        "icon-hammer::before": { "content": "'🔨'" },
-        "icon-drill::before": { "content": "'🔧'" },
-        "icon-saw::before": { "content": "'🪚'" },
-        "icon-pliers::before": { "content": "'🔧'" },
-        "icon-toolbox::before": { "content": "'🧰'" },
-        "icon-equipment::before": { "content": "'⚙️'" },
-        "icon-machinery::before": { "content": "'⚙️'" },
-        "icon-engine::before": { "content": "'⚙️'" },
-        "icon-motor::before": { "content": "'⚙️'" },
-        "icon-gear::before": { "content": "'⚙️'" },
-        "icon-cog::before": { "content": "'⚙️'" },
-        "icon-wheel::before": { "content": "'⚙️'" },
-        "icon-tire::before": { "content": "'⭕'" },
-        "icon-vehicle::before": { "content": "'🚗'" },
-        "icon-auto::before": { "content": "'🚗'" },
-        "icon-sedan::before": { "content": "'🚗'" },
-        "icon-suv::before": { "content": "'🚙'" },
-        "icon-van::before": { "content": "'🚐'" },
-        "icon-pickup::before": { "content": "'🛻'" },
-        "icon-convertible::before": { "content": "'🚗'" },
-        "icon-sports-car::before": { "content": "'🏎️'" },
-        "icon-racing::before": { "content": "'🏁'" },
-        "icon-formula::before": { "content": "'🏎️'" },
-        "icon-motorsport::before": { "content": "'🏎️'" },
-        "icon-speed::before": { "content": "'💨'" },
-        "icon-fast::before": { "content": "'⚡'" },
-        "icon-slow::before": { "content": "'🐌'" },
-        "icon-acceleration::before": { "content": "'🚀'" },
-        "icon-boost::before": { "content": "'🚀'" },
-        "icon-turbo::before": { "content": "'🚀'" },
-        "icon-rocket::before": { "content": "'🚀'" },
-        "icon-launch::before": { "content": "'🚀'" },
-        "icon-takeoff::before": { "content": "'🛫'" },
-        "icon-landing::before": { "content": "'🛬'" },
-        "icon-flight::before": { "content": "'✈️'" },
-        "icon-airline::before": { "content": "'✈️'" },
-        "icon-pilot::before": { "content": "'👨‍✈️'" },
-        "icon-crew::before": { "content": "'👥'" },
-        "icon-passenger::before": { "content": "'👤'" },
-        "icon-baggage::before": { "content": "'🧳'" },
-        "icon-luggage::before": { "content": "'🧳'" },
-        "icon-suitcase::before": { "content": "'🧳'" },
-        "icon-backpack::before": { "content": "'🎒'" },
-        "icon-bag-travel::before": { "content": "'👜'" },
-        "icon-purse::before": { "content": "'👛'" },
-        "icon-handbag::before": { "content": "'👜'" },
-        "icon-shopping-bag::before": { "content": "'🛍️'" },
-        "icon-tote::before": { "content": "'👜'" },
-        "icon-briefcase-business::before": { "content": "'💼'" },
-        "icon-attache::before": { "content": "'💼'" },
-        "icon-case::before": { "content": "'💼'" },
-        "icon-container::before": { "content": "'📦'" },
-        "icon-box-package::before": { "content": "'📦'" },
-        "icon-parcel::before": { "content": "'📦'" },
-        "icon-shipment::before": { "content": "'📦'" },
-        "icon-delivery-package::before": { "content": "'📦'" },
-        "icon-courier::before": { "content": "'🚚'" },
-        "icon-express::before": { "content": "'⚡'" },
-        "icon-overnight::before": { "content": "'🌙'" },
-        "icon-priority::before": { "content": "'⚡'" },
-        "icon-urgent::before": { "content": "'🚨'" },
-        "icon-rush::before": { "content": "'💨'" },
-        "icon-instant::before": { "content": "'⚡'" },
-        "icon-immediate::before": { "content": "'⚡'" },
-        "icon-now::before": { "content": "'⚡'" },
-        "icon-live::before": { "content": "'🔴'" },
-        "icon-real-time::before": { "content": "'⚡'" },
-        "icon-streaming::before": { "content": "'📡'" },
-        "icon-broadcast-live::before": { "content": "'📡'" },
-        "icon-podcast::before": { "content": "'🎙️'" },
-        "icon-audio::before": { "content": "'🔊'" },
-        "icon-sound::before": { "content": "'🔊'" },
-        "icon-music::before": { "content": "'🎵'" },
-        "icon-song::before": { "content": "'🎵'" },
-        "icon-track::before": { "content": "'🎵'" },
-        "icon-album::before": { "content": "'💿'" },
-        "icon-playlist::before": { "content": "'📋'" },
-        "icon-artist::before": { "content": "'🎤'" },
-        "icon-band::before": { "content": "'🎸'" },
-        "icon-concert::before": { "content": "'🎤'" },
-        "icon-show::before": { "content": "'🎭'" },
-        "icon-performance::before": { "content": "'🎭'" },
-        "icon-theater::before": { "content": "'🎭'" },
-        "icon-cinema::before": { "content": "'🎬'" },
-        "icon-movie::before": { "content": "'🎬'" },
-        "icon-film::before": { "content": "'🎬'" },
-        "icon-video-file::before": { "content": "'🎥'" },
-        "icon-clip::before": { "content": "'🎬'" },
-        "icon-trailer::before": { "content": "'🎬'" },
-        "icon-documentary::before": { "content": "'📹'" },
-        "icon-series::before": { "content": "'📺'" },
-        "icon-episode::before": { "content": "'📺'" },
-        "icon-season::before": { "content": "'📺'" },
-        "icon-channel::before": { "content": "'📺'" },
-        "icon-program::before": { "content": "'📺'" },
-        "icon-schedule-tv::before": { "content": "'📺'" },
-        "icon-guide::before": { "content": "'📋'" },
-        "icon-remote::before": { "content": "'📱'" },
-        "icon-control::before": { "content": "'🎮'" },
-        "icon-gaming::before": { "content": "'🎮'" },
-        "icon-game::before": { "content": "'🎮'" },
-        "icon-console::before": { "content": "'🎮'" },
-        "icon-controller::before": { "content": "'🎮'" },
-        "icon-joystick::before": { "content": "'🕹️'" },
-        "icon-arcade::before": { "content": "'🕹️'" },
-        "icon-retro::before": { "content": "'🕹️'" },
-        "icon-vintage::before": { "content": "'📼'" },
-        "icon-classic::before": { "content": "'📼'" },
-        "icon-nostalgia::before": { "content": "'📼'" },
-        "icon-memory::before": { "content": "'🧠'" },
-        "icon-remember::before": { "content": "'🧠'" },
-        "icon-forget::before": { "content": "'🤔'" },
-        "icon-mind::before": { "content": "'🧠'" },
-        "icon-brain::before": { "content": "'🧠'" },
-        "icon-think::before": { "content": "'🤔'" },
-        "icon-idea::before": { "content": "'💡'" },
-        "icon-lightbulb::before": { "content": "'💡'" },
-        "icon-inspiration::before": { "content": "'💡'" },
-        "icon-creativity::before": { "content": "'🎨'" },
-        "icon-imagination::before": { "content": "'🎨'" },
-        "icon-art::before": { "content": "'🎨'" },
-        "icon-design::before": { "content": "'🎨'" },
-        "icon-paint::before": { "content": "'🎨'" },
-        "icon-brush::before": { "content": "'🖌️'" },
-        "icon-palette::before": { "content": "'🎨'" },
-        "icon-color::before": { "content": "'🌈'" },
-        "icon-rainbow-colors::before": { "content": "'🌈'" },
-        "icon-spectrum::before": { "content": "'🌈'" },
-        "icon-gradient::before": { "content": "'🌈'" },
-        "icon-hue::before": { "content": "'🌈'" },
-        "icon-saturation::before": { "content": "'🌈'" },
-        "icon-brightness::before": { "content": "'☀️'" },
-        "icon-contrast::before": { "content": "'⚫'" },
-        "icon-black::before": { "content": "'⚫'" },
-        "icon-white::before": { "content": "'⚪'" },
-        "icon-gray::before": { "content": "'🔘'" },
-        "icon-red::before": { "content": "'🔴'" },
-        "icon-orange::before": { "content": "'🟠'" },
-        "icon-yellow::before": { "content": "'🟡'" },
-        "icon-green::before": { "content": "'🟢'" },
-        "icon-blue::before": { "content": "'🔵'" },
-        "icon-purple::before": { "content": "'🟣'" },
-        "icon-pink::before": { "content": "'🩷'" },
-        "icon-brown::before": { "content": "'🤎'" }
+    // === ICON SIZES ===
+    ".icon-xs": {
+        fontSize: "$iconSizeXs",
+        width: "$iconSizeXs",
+        height: "$iconSizeXs"
+    },
+    ".icon-sm": {
+        fontSize: "$iconSizeSm",
+        width: "$iconSizeSm",
+        height: "$iconSizeSm"
+    },
+    ".icon-md": {
+        fontSize: "$iconSizeMd",
+        width: "$iconSizeMd",
+        height: "$iconSizeMd"
+    },
+    ".icon-lg": {
+        fontSize: "$iconSizeLg",
+        width: "$iconSizeLg",
+        height: "$iconSizeLg"
+    },
+    ".icon-xl": {
+        fontSize: "$iconSizeXl",
+        width: "$iconSizeXl",
+        height: "$iconSizeXl"
+    },
+    ".icon-2xl": {
+        fontSize: "$iconSize2xl",
+        width: "$iconSize2xl",
+        height: "$iconSize2xl"
+    },
+    ".icon-3xl": {
+        fontSize: "$iconSize3xl",
+        width: "$iconSize3xl",
+        height: "$iconSize3xl"
+    },
+    
+    // === NAVIGATION & UI ICONS ===
+    ".icon-home": {
+        "&::before": { content: "'🏠'" }
+    },
+    ".icon-menu": {
+        "&::before": { content: "'☰'" }
+    },
+    ".icon-close": {
+        "&::before": { content: "'✕'" }
+    },
+    ".icon-search": {
+        "&::before": { content: "'🔍'" }
+    },
+    ".icon-filter": {
+        "&::before": { content: "'🔽'" }
+    },
+    ".icon-settings": {
+        "&::before": { content: "'⚙️'" }
+    },
+    ".icon-profile": {
+        "&::before": { content: "'👤'" }
+    },
+    ".icon-logout": {
+        "&::before": { content: "'↩️'" }
+    },
+    ".icon-login": {
+        "&::before": { content: "'↪️'" }
+    },
+    ".icon-dashboard": {
+        "&::before": { content: "'📊'" }
+    },
+    
+    // === ARROWS & DIRECTIONS ===
+    ".icon-arrow-up": {
+        "&::before": { content: "'↑'" }
+    },
+    ".icon-arrow-down": {
+        "&::before": { content: "'↓'" }
+    },
+    ".icon-arrow-left": {
+        "&::before": { content: "'←'" }
+    },
+    ".icon-arrow-right": {
+        "&::before": { content: "'→'" }
+    },
+    ".icon-chevron-up": {
+        "&::before": { content: "'⌃'" }
+    },
+    ".icon-chevron-down": {
+        "&::before": { content: "'⌄'" }
+    },
+    ".icon-chevron-left": {
+        "&::before": { content: "'‹'" }
+    },
+    ".icon-chevron-right": {
+        "&::before": { content: "'›'" }
+    },
+    ".icon-double-up": {
+        "&::before": { content: "'⇈'" }
+    },
+    ".icon-double-down": {
+        "&::before": { content: "'⇊'" }
+    },
+    
+    // === ACTIONS & CONTROLS ===
+    ".icon-play": {
+        "&::before": { content: "'▶️'" }
+    },
+    ".icon-pause": {
+        "&::before": { content: "'⏸️'" }
+    },
+    ".icon-stop": {
+        "&::before": { content: "'⏹️'" }
+    },
+    ".icon-previous": {
+        "&::before": { content: "'⏮️'" }
+    },
+    ".icon-next": {
+        "&::before": { content: "'⏭️'" }
+    },
+    ".icon-rewind": {
+        "&::before": { content: "'⏪'" }
+    },
+    ".icon-forward": {
+        "&::before": { content: "'⏩'" }
+    },
+    ".icon-record": {
+        "&::before": { content: "'⏺️'" }
+    },
+    ".icon-volume": {
+        "&::before": { content: "'🔊'" }
+    },
+    ".icon-mute": {
+        "&::before": { content: "'🔇'" }
+    },
+    
+    // === FILES & DOCUMENTS ===
+    ".icon-file": {
+        "&::before": { content: "'📄'" }
+    },
+    ".icon-folder": {
+        "&::before": { content: "'📁'" }
+    },
+    ".icon-folder-open": {
+        "&::before": { content: "'📂'" }
+    },
+    ".icon-document": {
+        "&::before": { content: "'📋'" }
+    },
+    ".icon-download": {
+        "&::before": { content: "'⬇️'" }
+    },
+    ".icon-upload": {
+        "&::before": { content: "'⬆️'" }
+    },
+    ".icon-attachment": {
+        "&::before": { content: "'📎'" }
+    },
+    ".icon-image": {
+        "&::before": { content: "'🖼️'" }
+    },
+    ".icon-pdf": {
+        "&::before": { content: "'📕'" }
+    },
+    ".icon-archive": {
+        "&::before": { content: "'🗃️'" }
+    },
+    
+    // === COMMUNICATION & SOCIAL ===
+    ".icon-email": {
+        "&::before": { content: "'✉️'" }
+    },
+    ".icon-message": {
+        "&::before": { content: "'💬'" }
+    },
+    ".icon-chat": {
+        "&::before": { content: "'💭'" }
+    },
+    ".icon-phone": {
+        "&::before": { content: "'📞'" }
+    },
+    ".icon-video": {
+        "&::before": { content: "'📹'" }
+    },
+    ".icon-camera": {
+        "&::before": { content: "'📷'" }
+    },
+    ".icon-share": {
+        "&::before": { content: "'📤'" }
+    },
+    ".icon-link": {
+        "&::before": { content: "'🔗'" }
+    },
+    ".icon-hashtag": {
+        "&::before": { content: "'#️⃣'" }
+    },
+    ".icon-mention": {
+        "&::before": { content: "'@'" }
+    },
+    
+    // === STATUS & FEEDBACK ===
+    ".icon-check": {
+        "&::before": { content: "'✓'" }
+    },
+    ".icon-checkmark": {
+        "&::before": { content: "'✅'" }
+    },
+    ".icon-cross": {
+        "&::before": { content: "'❌'" }
+    },
+    ".icon-warning": {
+        "&::before": { content: "'⚠️'" }
+    },
+    ".icon-error": {
+        "&::before": { content: "'🚫'" }
+    },
+    ".icon-info": {
+        "&::before": { content: "'ℹ️'" }
+    },
+    ".icon-question": {
+        "&::before": { content: "'❓'" }
+    },
+    ".icon-exclamation": {
+        "&::before": { content: "'❗'" }
+    },
+    ".icon-success": {
+        "&::before": { content: "'🎉'" }
+    },
+    ".icon-loading": {
+        "&::before": { content: "'⏳'" }
+    },
+    
+    // === SHOPPING & COMMERCE ===
+    ".icon-cart": {
+        "&::before": { content: "'🛒'" }
+    },
+    ".icon-bag": {
+        "&::before": { content: "'🛍️'" }
+    },
+    ".icon-credit-card": {
+        "&::before": { content: "'💳'" }
+    },
+    ".icon-money": {
+        "&::before": { content: "'💰'" }
+    },
+    ".icon-receipt": {
+        "&::before": { content: "'🧾'" }
+    },
+    ".icon-tag": {
+        "&::before": { content: "'🏷️'" }
+    },
+    ".icon-gift": {
+        "&::before": { content: "'🎁'" }
+    },
+    ".icon-sale": {
+        "&::before": { content: "'🏷️'" }
+    },
+    ".icon-discount": {
+        "&::before": { content: "'💸'" }
+    },
+    ".icon-wallet": {
+        "&::before": { content: "'👛'" }
+    },
+    
+    // === TIME & CALENDAR ===
+    ".icon-calendar": {
+        "&::before": { content: "'📅'" }
+    },
+    ".icon-clock": {
+        "&::before": { content: "'🕐'" }
+    },
+    ".icon-timer": {
+        "&::before": { content: "'⏲️'" }
+    },
+    ".icon-alarm": {
+        "&::before": { content: "'⏰'" }
+    },
+    ".icon-schedule": {
+        "&::before": { content: "'📆'" }
+    },
+    ".icon-date": {
+        "&::before": { content: "'📅'" }
+    },
+    ".icon-time": {
+        "&::before": { content: "'🕰️'" }
+    },
+    ".icon-deadline": {
+        "&::before": { content: "'⏰'" }
+    },
+    ".icon-reminder": {
+        "&::before": { content: "'🔔'" }
+    },
+    ".icon-event": {
+        "&::before": { content: "'🎯'" }
+    },
+    
+    // === LOCATION & MAPS ===
+    ".icon-location": {
+        "&::before": { content: "'📍'" }
+    },
+    ".icon-map": {
+        "&::before": { content: "'🗺️'" }
+    },
+    ".icon-navigate": {
+        "&::before": { content: "'🧭'" }
+    },
+    ".icon-destination": {
+        "&::before": { content: "'🎯'" }
+    },
+    ".icon-route": {
+        "&::before": { content: "'🛣️'" }
+    },
+    ".icon-travel": {
+        "&::before": { content: "'✈️'" }
+    },
+    ".icon-car": {
+        "&::before": { content: "'🚗'" }
+    },
+    ".icon-bus": {
+        "&::before": { content: "'🚌'" }
+    },
+    ".icon-train": {
+        "&::before": { content: "'🚂'" }
+    },
+    ".icon-bike": {
+        "&::before": { content: "'🚲'" }
+    },
+    
+    // === TECHNOLOGY & TOOLS ===
+    ".icon-computer": {
+        "&::before": { content: "'💻'" }
+    },
+    ".icon-mobile": {
+        "&::before": { content: "'📱'" }
+    },
+    ".icon-tablet": {
+        "&::before": { content: "'📟'" }
+    },
+    ".icon-keyboard": {
+        "&::before": { content: "'⌨️'" }
+    },
+    ".icon-mouse": {
+        "&::before": { content: "'🖱️'" }
+    },
+    ".icon-printer": {
+        "&::before": { content: "'🖨️'" }
+    },
+    ".icon-wifi": {
+        "&::before": { content: "'📶'" }
+    },
+    ".icon-bluetooth": {
+        "&::before": { content: "'📶'" }
+    },
+    ".icon-battery": {
+        "&::before": { content: "'🔋'" }
+    },
+    ".icon-power": {
+        "&::before": { content: "'⚡'" }
+    },
+    
+    // === WEATHER & NATURE ===
+    ".icon-sun": {
+        "&::before": { content: "'☀️'" }
+    },
+    ".icon-moon": {
+        "&::before": { content: "'🌙'" }
+    },
+    ".icon-star": {
+        "&::before": { content: "'⭐'" }
+    },
+    ".icon-cloud": {
+        "&::before": { content: "'☁️'" }
+    },
+    ".icon-rain": {
+        "&::before": { content: "'🌧️'" }
+    },
+    ".icon-snow": {
+        "&::before": { content: "'❄️'" }
+    },
+    ".icon-wind": {
+        "&::before": { content: "'💨'" }
+    },
+    ".icon-storm": {
+        "&::before": { content: "'⛈️'" }
+    },
+    ".icon-rainbow": {
+        "&::before": { content: "'🌈'" }
+    },
+    ".icon-fire": {
+        "&::before": { content: "'🔥'" }
+    },
+    
+    // === FOOD & DINING ===
+    ".icon-food": {
+        "&::before": { content: "'🍽️'" }
+    },
+    ".icon-restaurant": {
+        "&::before": { content: "'🍴'" }
+    },
+    ".icon-coffee": {
+        "&::before": { content: "'☕'" }
+    },
+    ".icon-pizza": {
+        "&::before": { content: "'🍕'" }
+    },
+    ".icon-burger": {
+        "&::before": { content: "'🍔'" }
+    },
+    ".icon-cake": {
+        "&::before": { content: "'🎂'" }
+    },
+    ".icon-drink": {
+        "&::before": { content: "'🥤'" }
+    },
+    ".icon-wine": {
+        "&::before": { content: "'🍷'" }
+    },
+    ".icon-beer": {
+        "&::before": { content: "'🍺'" }
+    },
+    ".icon-kitchen": {
+        "&::before": { content: "'👨‍🍳'" }
+    },
+    
+    // === HEALTH & MEDICAL ===
+    ".icon-health": {
+        "&::before": { content: "'🏥'" }
+    },
+    ".icon-medical": {
+        "&::before": { content: "'⚕️'" }
+    },
+    ".icon-pill": {
+        "&::before": { content: "'💊'" }
+    },
+    ".icon-heart": {
+        "&::before": { content: "'❤️'" }
+    },
+    ".icon-heartbeat": {
+        "&::before": { content: "'💓'" }
+    },
+    ".icon-fitness": {
+        "&::before": { content: "'💪'" }
+    },
+    ".icon-wellness": {
+        "&::before": { content: "'🧘'" }
+    },
+    ".icon-doctor": {
+        "&::before": { content: "'👩‍⚕️'" }
+    },
+    ".icon-ambulance": {
+        "&::before": { content: "'🚑'" }
+    },
+    ".icon-bandage": {
+        "&::before": { content: "'🩹'" }
+    },
+    
+    // === SPORTS & ACTIVITIES ===
+    ".icon-sports": {
+        "&::before": { content: "'⚽'" }
+    },
+    ".icon-football": {
+        "&::before": { content: "'🏈'" }
+    },
+    ".icon-basketball": {
+        "&::before": { content: "'🏀'" }
+    },
+    ".icon-tennis": {
+        "&::before": { content: "'🎾'" }
+    },
+    ".icon-golf": {
+        "&::before": { content: "'⛳'" }
+    },
+    ".icon-swimming": {
+        "&::before": { content: "'🏊'" }
+    },
+    ".icon-running": {
+        "&::before": { content: "'🏃'" }
+    },
+    ".icon-cycling": {
+        "&::before": { content: "'🚴'" }
+    },
+    ".icon-gym": {
+        "&::before": { content: "'🏋️'" }
+    },
+    ".icon-trophy": {
+        "&::before": { content: "'🏆'" }
+    },
+    
+    // === SECURITY & PRIVACY ===
+    ".icon-lock": {
+        "&::before": { content: "'🔒'" }
+    },
+    ".icon-unlock": {
+        "&::before": { content: "'🔓'" }
+    },
+    ".icon-key": {
+        "&::before": { content: "'🔑'" }
+    },
+    ".icon-shield": {
+        "&::before": { content: "'🛡️'" }
+    },
+    ".icon-security": {
+        "&::before": { content: "'🔐'" }
+    },
+    ".icon-password": {
+        "&::before": { content: "'🔒'" }
+    },
+    ".icon-fingerprint": {
+        "&::before": { content: "'👆'" }
+    },
+    ".icon-eye": {
+        "&::before": { content: "'👁️'" }
+    },
+    ".icon-eye-off": {
+        "&::before": { content: "'🙈'" }
+    },
+    ".icon-private": {
+        "&::before": { content: "'🔒'" }
+    },
+    
+    // === EMOTIONS & REACTIONS ===
+    ".icon-like": {
+        "&::before": { content: "'👍'" }
+    },
+    ".icon-dislike": {
+        "&::before": { content: "'👎'" }
+    },
+    ".icon-love": {
+        "&::before": { content: "'💖'" }
+    },
+    ".icon-happy": {
+        "&::before": { content: "'😊'" }
+    },
+    ".icon-sad": {
+        "&::before": { content: "'😢'" }
+    },
+    ".icon-angry": {
+        "&::before": { content: "'😠'" }
+    },
+    ".icon-surprised": {
+        "&::before": { content: "'😲'" }
+    },
+    ".icon-laughing": {
+        "&::before": { content: "'😂'" }
+    },
+    ".icon-thinking": {
+        "&::before": { content: "'🤔'" }
+    },
+    ".icon-celebrate": {
+        "&::before": { content: "'🎉'" }
+    },
+    
+    // === UTILITY & MISCELLANEOUS ===
+    ".icon-edit": {
+        "&::before": { content: "'✏️'" }
+    },
+    ".icon-delete": {
+        "&::before": { content: "'🗑️'" }
+    },
+    ".icon-copy": {
+        "&::before": { content: "'📋'" }
+    },
+    ".icon-paste": {
+        "&::before": { content: "'📄'" }
+    },
+    ".icon-cut": {
+        "&::before": { content: "'✂️'" }
+    },
+    ".icon-save": {
+        "&::before": { content: "'💾'" }
+    },
+    ".icon-refresh": {
+        "&::before": { content: "'🔄'" }
+    },
+    ".icon-sync": {
+        "&::before": { content: "'🔃'" }
+    },
+    ".icon-undo": {
+        "&::before": { content: "'↶'" }
+    },
+    ".icon-redo": {
+        "&::before": { content: "'↷'" }
+    },
+    ".icon-trash": {
+        "&::before": { content: "'🗑️'" }
+    },
+    ".icon-restore": {
+        "&::before": { content: "'♻️'" }
+    },
+    ".icon-backup": {
+        "&::before": { content: "'💿'" }
+    },
+    ".icon-export": {
+        "&::before": { content: "'📤'" }
+    },
+    ".icon-import": {
+        "&::before": { content: "'📥'" }
+    },
+    ".icon-print": {
+        "&::before": { content: "'🖨️'" }
+    },
+    ".icon-scan": {
+        "&::before": { content: "'📷'" }
+    },
+    ".icon-zoom-in": {
+        "&::before": { content: "'🔍'" }
+    },
+    ".icon-zoom-out": {
+        "&::before": { content: "'🔍'" }
+    },
+    ".icon-fullscreen": {
+        "&::before": { content: "'⛶'" }
+    },
+    ".icon-minimize": {
+        "&::before": { content: "'🗕'" }
+    },
+    ".icon-maximize": {
+        "&::before": { content: "'🗖'" }
+    },
+    ".icon-pin": {
+        "&::before": { content: "'📌'" }
+    },
+    ".icon-unpin": {
+        "&::before": { content: "'📌'" }
+    },
+    ".icon-bookmark": {
+        "&::before": { content: "'🔖'" }
+    },
+    ".icon-flag": {
+        "&::before": { content: "'🚩'" }
+    },
+    ".icon-star-filled": {
+        "&::before": { content: "'⭐'" }
+    },
+    ".icon-star-empty": {
+        "&::before": { content: "'☆'" }
+    },
+    ".icon-favorite": {
+        "&::before": { content: "'♥'" }
+    },
+    ".icon-unfavorite": {
+        "&::before": { content: "'♡'" }
+    },
+    
+    // === EXTENDED NAVIGATION & UI ===
+    ".icon-add": {
+        "&::before": { content: "'➕'" }
+    },
+    ".icon-plus": {
+        "&::before": { content: "'✚'" }
+    },
+    ".icon-minus": {
+        "&::before": { content: "'➖'" }
+    },
+    ".icon-remove": {
+        "&::before": { content: "'➖'" }
+    },
+    ".icon-more": {
+        "&::before": { content: "'⋯'" }
+    },
+    ".icon-more-vertical": {
+        "&::before": { content: "'⋮'" }
+    },
+    ".icon-more-horizontal": {
+        "&::before": { content: "'⋯'" }
+    },
+    ".icon-expand": {
+        "&::before": { content: "'⤢'" }
+    },
+    ".icon-collapse": {
+        "&::before": { content: "'⤡'" }
+    },
+    ".icon-external": {
+        "&::before": { content: "'↗️'" }
+    },
+    ".icon-new-window": {
+        "&::before": { content: "'🗗'" }
+    },
+    ".icon-sidebar": {
+        "&::before": { content: "'⚏'" }
+    },
+    ".icon-grid": {
+        "&::before": { content: "'⚏'" }
+    },
+    ".icon-list": {
+        "&::before": { content: "'☰'" }
+    },
+    ".icon-layout": {
+        "&::before": { content: "'⊞'" }
+    },
+    ".icon-widget": {
+        "&::before": { content: "'⊞'" }
+    },
+    ".icon-panel": {
+        "&::before": { content: "'⊞'" }
+    },
+    ".icon-split": {
+        "&::before": { content: "'⫿'" }
+    },
+    ".icon-merge": {
+        "&::before": { content: "'⚏'" }
+    },
+    ".icon-duplicate": {
+        "&::before": { content: "'⧉'" }
     }
-});
+}));
